@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 
 // Definição dos componentes
@@ -38,6 +38,50 @@ const Configuracoes = () => (
   </div>
 );
 
+// Tela de Login
+const Login = () => (
+  <div className="page-section">
+    <h2>Login</h2>
+    <form>
+      <div className="form-group">
+        <label htmlFor="username">Usuário:</label>
+        <input type="text" id="username" name="username" className="form-control" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">Senha:</label>
+        <input type="password" id="password" name="password" className="form-control" />
+      </div>
+      <button type="submit" className="btn">Entrar</button>
+    </form>
+  </div>
+);
+
+// Tela de Cadastro
+const Cadastro = () => (
+  <div className="page-section">
+    <h2>Cadastrar Novo Usuário</h2>
+    <form>
+      <div className="form-group">
+        <label htmlFor="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" className="form-control" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">E-mail:</label>
+        <input type="email" id="email" name="email" className="form-control" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">Senha:</label>
+        <input type="password" id="password" name="password" className="form-control" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="confirmPassword">Confirmar Senha:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" className="form-control" />
+      </div>
+      <button type="submit" className="btn">Cadastrar</button>
+    </form>
+  </div>
+);
+
 function App() {
   return (
     <Router>
@@ -46,11 +90,13 @@ function App() {
           {/* Menu de Navegação */}
           <nav className="navbar">
             <ul className="navbar-list">
-              <li><a href="/" className="navbar-link">Início</a></li>
-              <li><a href="/produtos" className="navbar-link">Produtos</a></li>
-              <li><a href="/movimentacao" className="navbar-link">Movimentação</a></li>
-              <li><a href="/relatorios" className="navbar-link">Relatórios</a></li>
-              <li><a href="/configuracoes" className="navbar-link">Configurações</a></li>
+              <li><Link to="/" className="navbar-link">Início</Link></li>
+              <li><Link to="/produtos" className="navbar-link">Produtos</Link></li>
+              <li><Link to="/movimentacao" className="navbar-link">Movimentação</Link></li>
+              <li><Link to="/relatorios" className="navbar-link">Relatórios</Link></li>
+              <li><Link to="/configuracoes" className="navbar-link">Configurações</Link></li>
+              <li><Link to="/login" className="navbar-link">Login</Link></li>
+              <li><Link to="/cadastro" className="navbar-link">Cadastrar</Link></li>
             </ul>
           </nav>
         </header>
@@ -62,6 +108,8 @@ function App() {
             <Route path="/movimentacao" element={<Movimentacao />} />
             <Route path="/relatorios" element={<Relatorios />} />
             <Route path="/configuracoes" element={<Configuracoes />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
           </Routes>
         </main>
 
